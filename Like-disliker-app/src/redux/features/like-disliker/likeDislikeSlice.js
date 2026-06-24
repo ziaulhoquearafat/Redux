@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    like: 0,
-    dislike: 0
+    likes: 0,
+    dislikes: 0
 }
 
 const likeDislikeSlice = createSlice({
@@ -10,10 +10,10 @@ const likeDislikeSlice = createSlice({
     initialState,
     reducers: {
         increaseLikes: (state) => {
-            state.like = + 1
+            state.likes = + 1
         },
         increaseDislikes: (state) => {
-            state.dislike = +1
+            state.dislikes = +1
         }
     }
 })

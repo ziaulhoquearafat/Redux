@@ -1,7 +1,9 @@
+import { useSelector } from "react-redux";
+
 const LikeDisliker = () => {
-  // Static placeholder values matching the updated likeDislikeSlice schema
-  const likes = 0;
-  const dislikes = 0;
+  const { likes, dislikes } = useSelector((state) => state.likeDislike);
+  console.log({likes, dislikes})
+  
 
   // Calculate sentiment ratio for visual progress bar (50/50 placeholder when both are 0)
   const total = likes + dislikes;
