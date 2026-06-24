@@ -1,9 +1,22 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  increaseLikes,
+  increaseDislikes,
+  resets,
+} from "../redux/features/like-disliker/likeDislikeSlice";
 
 const LikeDisliker = () => {
   const { likes, dislikes } = useSelector((state) => state.likeDislike);
-  console.log({likes, dislikes})
-  
+
+  const dispatch = useDispatch();
+
+  const handleIncreaseLikes = () => {
+    dispatch(increaseLikes());
+  };
+
+  const handleResets = () => {
+    dispatch(resets());
+  };
 
   // Calculate sentiment ratio for visual progress bar (50/50 placeholder when both are 0)
   const total = likes + dislikes;
@@ -87,7 +100,10 @@ const LikeDisliker = () => {
           {/* Controls Container */}
           <div className="w-full grid grid-cols-2 gap-4 mb-6">
             {/* Like Button */}
-            <button className="flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 active:scale-95 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-200 cursor-pointer">
+            <button
+              onClick={handleIncreaseLikes}
+              className="flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 active:scale-95 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-200 cursor-pointer"
+            >
               <svg
                 className="w-5 h-5"
                 fill="none"
@@ -106,7 +122,10 @@ const LikeDisliker = () => {
             </button>
 
             {/* Dislike Button */}
-            <button className="flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl font-semibold text-white bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-400 hover:to-red-500 active:scale-95 shadow-lg shadow-rose-500/20 hover:shadow-rose-500/30 transition-all duration-200 cursor-pointer">
+            <button
+              onClick={() => dispatch(increaseDislikes())}
+              className="flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl font-semibold text-white bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-400 hover:to-red-500 active:scale-95 shadow-lg shadow-rose-500/20 hover:shadow-rose-500/30 transition-all duration-200 cursor-pointer"
+            >
               <svg
                 className="w-5 h-5"
                 fill="none"
@@ -127,7 +146,10 @@ const LikeDisliker = () => {
           </div>
 
           {/* Reset Button - Full Width */}
-          <button className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl font-semibold text-slate-300 border border-slate-800 bg-slate-900/50 hover:bg-slate-900 hover:text-white active:scale-[0.98] transition-all duration-200 cursor-pointer">
+          <button
+            onClick={handleResets}
+            className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl font-semibold text-slate-300 border border-slate-800 bg-slate-900/50 hover:bg-slate-900 hover:text-white active:scale-[0.98] transition-all duration-200 cursor-pointer"
+          >
             <svg
               className="w-4 h-4 transition-transform duration-500 hover:rotate-180"
               fill="none"
