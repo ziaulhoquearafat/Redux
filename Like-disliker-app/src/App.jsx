@@ -8,7 +8,7 @@ function App() {
       
       <div className="relative z-10 w-full max-w-md text-center mb-8">
         <h1 className="text-4xl font-extrabold tracking-tight bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent">
-          Sentiment Engine
+          Like & Dislike
         </h1>
         <p className="mt-2 text-slate-400 text-sm max-w-xs mx-auto">
           Use the controls below to express your feedback and watch the state evolve.
