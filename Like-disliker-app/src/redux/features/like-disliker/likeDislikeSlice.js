@@ -5,10 +5,18 @@ const initialState = {
     dislike: 0
 }
 
-export const likeDislikeSlice = createSlice({
+const likeDislikeSlice = createSlice({
     name: 'likeDislike',
     initialState,
     reducers: {
-
+        increaseLikes: (state) => {
+            state.like = + 1
+        },
+        increaseDislikes: (state) => {
+            state.dislike = +1
+        }
     }
 })
+
+export const { increaseLikes, increaseDislikes } = likeDislikeSlice.actions
+export default likeDislikeSlice.reducer
